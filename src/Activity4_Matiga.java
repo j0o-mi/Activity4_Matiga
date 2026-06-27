@@ -6,27 +6,28 @@ public class Activity4_Matiga {
         Scanner sc = new Scanner(System.in);
         Random rd = new Random();
 
-        int x = rd.nextInt(11);
+        int secretNum = rd.nextInt(11);
+        int userGuess = 0;
+        int attempts = 0;
 
         System.out.println("=== Number Guessing Game ===");
         System.out.println("Guess a number between 0-10");
 
-        System.out.print("\nEnter your Guess: ");
-        int userGuess = sc.nextInt();
+        while (userGuess != secretNum) {
+            System.out.print("\nEnter your Guess: ");
+            userGuess = sc.nextInt();
 
-        while (userGuess != x) {
-            System.out.println();
+            attempts++;
+
+            if (userGuess == secretNum) {
+                System.out.println("Congratulations! You have guessed it in " + attempts + " attempts.");
+            } else if (userGuess > secretNum) {
+                System.out.println("Too High! Try Again.");
+            } else {
+                System.out.println("Too Low! Try Again.");
+            }
         }
 
-
-        if (userGuess > x) {
-            System.out.println("Too Low!");
-        } else if (userGuess < x) {
-            System.out.println("Too High!");
-        } else if (userGuess == x) {
-            System.out.println("You have guessed the value of x! " + x);
-        } else {
-            System.out.println("Invalid Guess");
-        }
+        sc.close();
     }
 }
